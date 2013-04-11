@@ -2,9 +2,8 @@ Exchange Attachment Migrator
 
 Aim:
 
-Polls an Exchange server and looks for email attachments. Uploads attachments to Azure (for example) and then modifies the link in Exchange to point to itself.
-When the link is used, it checks if the user has permission for the original attachment (no idea how to do that yet) then redirects to the Azure blob.
+Polls an Exchange server and looks for email attachments. Uploads attachments to Azure (for example) and then modifies the link in Exchange to point to "Exchange Attachment Migrator" service. 
+The original attachment from Exchange is deleted. 
+When the link within Exchange is used EAM checks the user has permission to see the attachment then redirects to the attachment blob.
 
-Original attachment in Exchange is removed, saving space.
-
-All theory for now...
+At least, this is the theory....
