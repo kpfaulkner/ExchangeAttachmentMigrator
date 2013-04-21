@@ -1,4 +1,22 @@
-﻿using Microsoft.Exchange.WebServices.Data;
+﻿//-----------------------------------------------------------------------
+// <copyright >
+//    Copyright 2013 Ken Faulkner
+//
+//    Licensed under the Apache License, Version 2.0 (the "License");
+//    you may not use this file except in compliance with the License.
+//    You may obtain a copy of the License at
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+//    Unless required by applicable law or agreed to in writing, software
+//    distributed under the License is distributed on an "AS IS" BASIS,
+//    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+//    See the License for the specific language governing permissions and
+//    limitations under the License.
+// </copyright>
+//-----------------------------------------------------------------------
+
+using CommonDataTypes;
+using Microsoft.Exchange.WebServices.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -44,35 +62,51 @@ namespace ExchangeMigratorClient
 
                 if (message.HasAttachments)
                 {
-                    FileAttachment fa = message.Attachments[0] as FileAttachment;
-                    if (fa != null)
+                    foreach (var attachment in message.Attachments)
                     {
-                        /*
-                        fa.Load();
-                        message.Attachments.AddItemAttachment<EmailMessage>();
-                        message.Attachments.RemoveAt(0);
-                        message.Update(ConflictResolutionMode.AlwaysOverwrite);
-                         * */
-                    }
+                        FileAttachment fa = attachment as FileAttachment;
+                        if (fa != null)
+                        {
+                            fa.Load();
+                            var url = CopyAttachmentToAzure(fa);
+                            DeleteAttachmentException(message, fa);
+                            var newAttachment = CreateAttachment(url, fa.FileName);
+                            message.Attachments.AddFileAttachment(newAttachment.Name, newAttachment.Bytes);
+                            message.Update(ConflictResolutionMode.AlwaysOverwrite);
 
+                        }
+                    }
                 }
 
             }
         }
 
-        public void InspectExchange()
-        {
 
+        static byte[] GetBytes(string str)
+        {
+            byte[] bytes = new byte[str.Length * sizeof(char)];
+            System.Buffer.BlockCopy(str.ToCharArray(), 0, bytes, 0, bytes.Length);
+            return bytes;
         }
 
-        public void CopyAttachmentToAzure()
+        // url is cloud url.
+        public UrlAttachment CreateAttachment(string url, string name)
         {
-
+            var html = "<html><a href=\""+ url + "\">Attachment: "+name+"</a></html>";
+            var attachment = new UrlAttachment();
+            attachment.Name = name;
+            attachment.Bytes = GetBytes( html);
+            return attachment;
         }
 
-        public void RemoveAttachmentFromExchange()
+        public string CopyAttachmentToAzure(FileAttachment fa)
         {
+            throw new NotImplementedException();
+        }
 
+        public void DeleteAttachmentException(EmailMessage message, FileAttachment fa)
+        {
+            message.Attachments.Remove( fa );
         }
     }
 }

@@ -10,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExchangeMigratorClient", "ExchangeMigratorClient\ExchangeMigratorClient.csproj", "{1F6FC258-66EB-4EEF-802E-3D6E6B2F7238}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AzureManager", "AzureManager\AzureManager.csproj", "{77724E6C-19A9-4A74-9C3A-B5197597B361}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonDataTypes", "CommonDataTypes\CommonDataTypes.csproj", "{570FAB6D-C5AA-45C4-9FB9-C9A09EC0CB1B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,11 +28,16 @@ Global
 		{1F6FC258-66EB-4EEF-802E-3D6E6B2F7238}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F6FC258-66EB-4EEF-802E-3D6E6B2F7238}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F6FC258-66EB-4EEF-802E-3D6E6B2F7238}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77724E6C-19A9-4A74-9C3A-B5197597B361}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77724E6C-19A9-4A74-9C3A-B5197597B361}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77724E6C-19A9-4A74-9C3A-B5197597B361}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77724E6C-19A9-4A74-9C3A-B5197597B361}.Release|Any CPU.Build.0 = Release|Any CPU
+		{570FAB6D-C5AA-45C4-9FB9-C9A09EC0CB1B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{570FAB6D-C5AA-45C4-9FB9-C9A09EC0CB1B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{570FAB6D-C5AA-45C4-9FB9-C9A09EC0CB1B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{570FAB6D-C5AA-45C4-9FB9-C9A09EC0CB1B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
-		{1F6FC258-66EB-4EEF-802E-3D6E6B2F7238} = {5A40D429-4B9F-416F-B34B-3BEA28E7F610}
 	EndGlobalSection
 EndGlobal

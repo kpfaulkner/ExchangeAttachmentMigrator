@@ -15,23 +15,19 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-using ExchangeMigratorClient;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace ExchangeAttachmentMigrator
+namespace CommonDataTypes
 {
-    class Program
+    public class UrlAttachment
     {
-
-        static void Main(string[] args)
-        {
-            var client = new EMClient( ConfigHelper.ExchangeUrl, ConfigHelper.Domain, ConfigHelper.Account, ConfigHelper.Password);
-
-            client.SearchEmailOfAccount("");
-        }
+        public byte[] Bytes { get; set; }
+        public string Name { get; set; }
+        public string Account { get; set; }
+        public DateTime TimeStamp { get; set; }
     }
 }
